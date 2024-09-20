@@ -18,4 +18,5 @@ export class AppComponent {
     fechaInscrito:new Date(),
     pago:2220
   };
+
 }
