@@ -6,15 +6,16 @@ lista de productos
 <div class="card-body">
     <div class="row">
         <div class="col-md-2">
-            filtrar:
+            filtrar por:
         </div>
         <div>
-            <input type="text" class="from-control" name="filter">
+            <input type="text" [(ngModel)]="listFilter" class="from-control" name="filter">
+
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <h3>Filtro:</h3>
+            <h3>Filtro:{{listFilter}}</h3>
         </div>
     </div>
     <div class="table-responsive">
@@ -23,7 +24,7 @@ lista de productos
                 <tr>
                     <th>
                         <button (click)="mostarImagen()" class="btn btn-primary"
-                        type="button">Imagen</button>
+                        type="button">{{muestraImagenes?'ocultar imagenes':'mostrar imagenes'}}</button>
                     </th>
                     <th>modelo</th>
                     <th>descripcion</th>
@@ -34,7 +35,7 @@ lista de productos
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let producto of productos">
+                <tr *ngFor="let producto of productos | productoFilter: listFilter" >
                     <td *ngIf="muestraImagenes">
                         <img [src]="producto.imgUrl"
                         [title]="producto.modelo"
