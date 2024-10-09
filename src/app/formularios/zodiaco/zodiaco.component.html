@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Calcula tu signo del zodiaco
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formulario" (ngSubmit)="imprimir(formulario)">
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                            <div *ngIf="formulario?.get('nombre')?.invalid && formulario?.get('nombre')?.touched" class="text-danger">
+                                Nombre es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido Paterno:</label>
+                            <input type="text" class="form-control" formControlName="a_paterno">
+                            <div *ngIf="formulario?.get('a_paterno')?.invalid && formulario?.get('a_paterno')?.touched" class="text-danger">
+                                Apellido paterno es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido Materno:</label>
+                            <input type="text" class="form-control" formControlName="a_materno">
+                            <div *ngIf="formulario?.get('a_materno')?.invalid && formulario?.get('a_materno')?.touched" class="text-danger">
+                                Apellido materno es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Día:</label>
+                            <input type="number" class="form-control" formControlName="dia">
+                            <div *ngIf="formulario.get('dia')?.invalid && formulario.get('dia')?.touched" class="text-danger">
+                                Día de nacimiento es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mes:</label>
+                            <input type="number" class="form-control" formControlName="mes">
+                            <div *ngIf="formulario.get('mes')?.invalid && formulario.get('mes')?.touched" class="text-danger">
+                                Mes de nacimiento es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Año:</label>
+                            <input type="number" class="form-control" formControlName="a_o">
+                            <div *ngIf="formulario.get('a_o')?.invalid && formulario.get('a_o')?.touched" class="text-danger">
+                                Año de nacimiento es requerido.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Sexo:</label>
+                            <select formControlName="sexo" class="form-control">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                            <div *ngIf="formulario.get('sexo')?.invalid && formulario.get('sexo')?.touched" class="text-danger">
+                                Sexo es requerido.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Calcular</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div *ngIf="nombre" class="card">
+                <div class="card-header">
+                    Resultados
+                </div>
+                <div class="card-body">
+                    <h4>Tu nombre es: {{nombre}}</h4>
+                    <h4>Tu signo del zodiaco chino es: {{signoZodiaco}}</h4>
+                    <h4>Tu edad es: {{edad}}</h4>
+                    <div *ngIf="imagenSignoZodiaco">
+                        <img [src]="imagenSignoZodiaco" alt="signo zodiaco" class="img-fluid">
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+                    

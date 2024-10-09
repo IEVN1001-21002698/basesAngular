@@ -15,6 +15,7 @@ distanciaForm = new FormGroup({
 
   distancia: number = 0;
 
+
   calcularDistancia() {
     const x1 = Number(this.distanciaForm.get('x1')?.value);
     const y1 = Number(this.distanciaForm.get('y1')?.value);
